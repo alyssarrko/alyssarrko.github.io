@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alyssa Gao</title>
+    <meta name="description" content="Alyssa Gao — CS senior at Barnard College researching privacy, security, HCI, and consent.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #FAFAF8;
+            --text: #1C1C1C;
+            --text-secondary: #555;
+            --accent: #3A6B82;
+            --accent-hover: #2D5466;
+            --border: #E2E0DC;
+            --surface: #fff;
+            --tag-bg: #EDF2F5;
+            --serif: 'Source Serif 4', Georgia, serif;
+            --sans: 'Inter', -apple-system, sans-serif;
+            --max-width: 720px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #1A1A1A;
+                --text: #E8E6E1;
+                --text-secondary: #A0A0A0;
+                --accent: #6AAFCF;
+                --accent-hover: #8BC4DE;
+                --border: #333;
+                --surface: #242424;
+                --tag-bg: #2A3338;
+            }
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        nav .nav-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 52px;
+        }
+
+        nav .site-name {
+            font-family: var(--serif);
+            font-weight: 600;
+            font-size: 17px;
+            color: var(--text);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav .tabs {
+            display: flex;
+            gap: 4px;
+            list-style: none;
+        }
+
+        nav .tabs li a {
+            display: block;
+            padding: 6px 14px;
+            font-size: 13.5px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: color 0.15s, background 0.15s;
+            cursor: pointer;
+        }
+
+        nav .tabs li a:hover { color: var(--text); background: var(--tag-bg); }
+        nav .tabs li a.active { color: var(--accent); background: var(--tag-bg); }
+
+        /* mobile nav */
+        @media (max-width: 600px) {
+            nav .nav-inner { flex-direction: column; height: auto; padding: 10px 16px 6px; gap: 6px; }
+            nav .tabs { gap: 2px; flex-wrap: wrap; justify-content: center; }
+            nav .tabs li a { padding: 5px 10px; font-size: 13px; }
+        }
+
+        /* --- MAIN --- */
+        main {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+
+        /* --- PROFILE HEADER --- */
+        .profile {
+            display: flex;
+            gap: 36px;
+            align-items: flex-start;
+            margin-bottom: 36px;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .profile-info { flex: 1; }
+
+        .profile-info h1 {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            letter-spacing: -0.01em;
+        }
+
+        .profile-info .subtitle {
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            margin-bottom: 14px;
+        }
+
+        .profile-info .subtitle a { color: var(--accent); text-decoration: none; }
+        .profile-info .subtitle a:hover { text-decoration: underline; }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            font-size: 13.5px;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .social-links a:hover { text-decoration: underline; }
+
+        @media (max-width: 600px) {
+            .profile { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+            .profile-photo { width: 150px; height: 150px; }
+            .social-links { justify-content: center; }
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h2 {
+            font-family: var(--serif);
+            font-size: 21px;
+            font-weight: 600;
+            margin: 40px 0 16px;
+            letter-spacing: -0.01em;
+        }
+
+        h2:first-child { margin-top: 0; }
+
+        h3 {
+            font-family: var(--sans);
+            font-size: 16px;
+            font-weight: 600;
+            margin: 28px 0 6px;
+        }
+
+        p { margin-bottom: 14px; max-width: 65ch; }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        strong { font-weight: 600; }
+
+        hr {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 32px 0;
+        }
+
+        .meta {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        /* --- NEWS --- */
+        .news-list { list-style: none; margin-bottom: 24px; }
+
+        .news-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 14px;
+            display: flex;
+            gap: 14px;
+        }
+
+        .news-list li:last-child { border-bottom: none; }
+
+        .news-date {
+            color: var(--text-secondary);
+            font-size: 13px;
+            flex-shrink: 0;
+            width: 80px;
+        }
+
+        /* --- RESEARCH CARDS --- */
+        .project {
+            margin-bottom: 36px;
+        }
+
+        .project h3 { margin-top: 0; }
+
+        .project .project-sub {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .poster-img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 16px 0;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .poster-img:hover { transform: scale(1.01); }
+
+        .img-caption {
+            font-size: 13px;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-top: -8px;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        /* --- PUBLICATIONS --- */
+        .pub {
+            font-size: 14px;
+            margin-bottom: 10px;
+            padding-left: 16px;
+            border-left: 2px solid var(--border);
+        }
+
+        .pub .pub-title { font-style: italic; }
+
+        /* --- PERSONAL --- */
+        .personal-photo {
+            max-width: 360px;
+            border-radius: 8px;
+            margin: 16px 0;
+        }
+
+        @media (max-width: 600px) { .personal-photo { max-width: 100%; } }
+
+        /* --- CV --- */
+        .cv-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: background 0.15s;
+        }
+
+        .cv-download:hover { background: var(--accent-hover); text-decoration: none; }
+
+        .cv-section { margin-bottom: 28px; }
+
+        .cv-entry { margin-bottom: 16px; }
+
+        .cv-entry .cv-place {
+            font-weight: 600;
+            font-size: 14.5px;
+        }
+
+        .cv-entry .cv-detail {
+            font-size: 13.5px;
+            color: var(--text-secondary);
+        }
+
+        .skill-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: var(--tag-bg);
+            border-radius: 4px;
+            font-size: 13px;
+        }
+
+        /* --- CONTACT --- */
+        .contact-row {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14.5px;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            min-width: 70px;
+        }
+
+        /* --- LIGHTBOX --- */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 1000;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.open { display: flex; }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a class="site-name" onclick="switchTab('about')">Alyssa Gao</a>
+        <ul class="tabs">
+            <li><a onclick="switchTab('about')" class="active" data-tab="about">About</a></li>
+            <li><a onclick="switchTab('research')" data-tab="research">Research</a></li>
+            <li><a onclick="switchTab('cv')" data-tab="cv">CV</a></li>
+            <li><a onclick="switchTab('contact')" data-tab="contact">Contact</a></li>
+            <li><a onclick="switchTab('personal')" data-tab="personal">Personal</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+
+<!-- ==================== ABOUT ==================== -->
+<div class="tab-content active" id="about">
+
+    <div class="profile">
+        <img src="assets/img/prof_pic.jpg" alt="Alyssa Gao" class="profile-photo">
+        <div class="profile-info">
+            <h1>Alyssa Gao <span style="font-weight:400; font-size:22px; color:var(--text-secondary);">高榕</span></h1>
+            <div class="subtitle">
+                Computer Science · <a href="https://barnard.edu/">Barnard College, Columbia University</a><br>
+                Minors in Political Science and Statistics
+            </div>
+            <div class="social-links">
+                <a href="mailto:ag5039@barnard.edu">✉ ag5039@barnard.edu</a>
+                <a href="https://github.com/alyssarrko" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/alyssa-ko-gr030731/" target="_blank">LinkedIn</a>
+                <a href="assets/pdf/Alyssa_Gao_CV.pdf" target="_blank">CV (PDF)</a>
+            </div>
+        </div>
+    </div>
+
+    <p>
+        Hi, I'm Alyssa. I'm a senior at <a href="https://barnard.edu/">Barnard College, Columbia University</a>
+        majoring in Computer Science with minors in Political Science and Statistics.
+    </p>
+
+    <p>
+        My research lives at the intersection of <strong>privacy, security, human-computer interaction, and consent</strong>.
+        I study how people navigate consent in digital environments — from cookie banners to phone theft recovery — and
+        how we can design systems that respect user autonomy rather than undermine it. My longer-term north star is
+        <strong>AI ethics and AI governance</strong>: understanding and shaping the societal implications of AI systems,
+        building on a foundation in usable privacy and security.
+    </p>
+
+    <p>
+        I'm currently co-leading a study evaluating the quality of online advice for phone theft victims
+        (targeting <a href="https://www.usenix.org/conference/usenixsecurity27">USENIX Security 2027</a>),
+        advised by <a href="https://www.lucysimko.com/">Prof. Lucy Simko</a>. I'm also working on my senior thesis,
+        building a tool that lets users reflect on their own consent decisions using AI-agent and collective design methods.
+    </p>
+
+    <p>I'm applying to PhD programs for Fall 2027. Feel free to <a href="#" onclick="switchTab('contact'); return false;">reach out</a> — I'd love to connect.</p>
+
+    <h2>News</h2>
+    <ul class="news-list">
+        <li><span class="news-date">Sep 2026</span> Applying to PhD programs for Fall 2027 — researching privacy, HCI, consent, and AI governance.</li>
+        <li><span class="news-date">Sep 2026</span> Started my senior year at Barnard — working on my thesis on consent reflection tools.</li>
+        <li><span class="news-date">Jun 2026</span> Began summer research evaluating online advice for phone theft victims, targeting USENIX Security 2027.</li>
+    </ul>
+</div>
+
+<!-- ==================== RESEARCH ==================== -->
+<div class="tab-content" id="research">
+
+    <p>
+        My research centers on <strong>usable privacy and security</strong> — how people experience consent, control,
+        and autonomy in digital systems, and how design choices shape those experiences. I use qualitative methods,
+        thematic analysis, and systems-building to study these questions.
+    </p>
+
+    <hr>
+
+    <h2>Current Projects</h2>
+
+    <div class="project">
+        <h3>What To Do When Your Phone Gets Stolen</h3>
+        <div class="project-sub">A Systematic Evaluation of Online Advice for Phone-Theft Victims</div>
+        <p class="meta">Research Fellow · May 2026 – Present · USENIX Security 2027 (in prep)<br>
+        Advisors: <a href="https://www.lucysimko.com/">Prof. Lucy Simko</a>,
+        <a href="https://www.yaseminacar.de/">Prof. Yasemin Acar</a> (Paderborn University)</p>
+
+        <p>
+            Co-leading a research team evaluating the quality, coverage, and actionability of online advice
+            available to phone theft victims. We designed a search protocol emulating how a victim would seek
+            help — authoring 90 queries and controlling for time, location, and personalization — then applied
+            reflexive thematic analysis to build a source × code matrix exposing systematic coverage gaps.
+        </p>
+        <p>
+            Key findings: advice protects the device but not the person; emotional support is nearly absent
+            from official sources; and no single source is comprehensive. Supported by the Andrew W. Mellon
+            Foundation and CyberNYC REU funding.
+        </p>
+
+        <img src="assets/img/phone_theft_poster.jpg" alt="Phone theft research poster" class="poster-img" onclick="openLightbox(this.src)">
+        <div class="img-caption">Presenting at Barnard College Summer Research Institute, 2026</div>
+    </div>
+
+    <div class="project">
+        <h3>Senior Thesis — Consent Reflection Tools</h3>
+        <p class="meta">Barnard College · 2026–2027</p>
+        <p>
+            Building a probe that lets users reflect on their own consent decisions in digital environments,
+            using AI-agent and collective design methods. This work explores whether structured reflection
+            can change how people think about the privacy trade-offs they make every day.
+        </p>
+    </div>
+
+    <hr>
+
+    <h2>Past Projects</h2>
+
+    <div class="project">
+        <h3>Auto Cookie Rejector</h3>
+        <div class="project-sub">A Chrome Extension for Automated Consent Refusal</div>
+        <p class="meta">Course Research Project · Jan – May 2026 · Advisor: Prof. Lucy Simko</p>
+        <p>
+            Built a Manifest V3 Chrome extension that detects cookie consent interfaces and automatically
+            selects the reject option. Engineered resilient DOM querying with fallback logic for dynamic loading,
+            iframes, and site-specific implementations. Connected technical findings back to dark-patterns research:
+            the interfaces hardest to automate away often correspond to the most manipulative consent designs.
+        </p>
+    </div>
+
+    <div class="project">
+        <h3>Cookie Consent Interfaces</h3>
+        <div class="project-sub">A Qualitative Study of Dark Patterns and User Decision-Making</div>
+        <p class="meta">Course Research Project · Sep – Dec 2025 · Advisor: Prof. Lucy Simko</p>
+        <p>
+            Investigated how interface design and dark patterns shape user privacy decisions on cookie consent banners.
+            Conducted semi-structured interviews, developed an iterative codebook, and performed thematic analysis.
+            Identified recurring manipulative design mechanisms — unequal button salience, forced scrolling, and
+            pre-checked defaults — and characterized how each undermines the voluntariness that consent regulation presumes.
+        </p>
+
+        <img src="assets/img/cookie_consent_poster.jpg" alt="Cookie consent research poster" class="poster-img" onclick="openLightbox(this.src)">
+        <div class="img-caption">"Bob Already Decided: Habit and Intrusion in Cookie Consent" — poster presentation</div>
+    </div>
+
+    <hr>
+
+    <h2>Presentations &amp; Posters</h2>
+
+    <div class="pub">
+        Pokharel, A.*, <strong>Gao, A.*</strong>, Irungu, A., Acar, Y., &amp; Simko, L. (2026).
+        <span class="pub-title">What To Do When Your Phone Gets Stolen: A Systematic Evaluation of Online Advice for Phone-Theft Victims</span>
+        [Poster]. Barnard College Summer Research Institute, New York, NY. *Equal contribution.
+    </div>
+
+    <div class="pub">
+        Nasser, S., <strong>Gao, A.</strong>, &amp; Waldron, J. (2025).
+        <span class="pub-title">Bob Already Decided: Habit and Intrusion in Cookie Consent</span>
+        [Poster] [Paper]. COMS BC3422, Barnard College, New York, NY.
+    </div>
+</div>
+
+<!-- ==================== CV ==================== -->
+<div class="tab-content" id="cv">
+
+    <a href="assets/pdf/Alyssa_Gao_CV.pdf" class="cv-download" target="_blank">↓ Download CV (PDF)</a>
+
+    <div class="cv-section">
+        <h2>Education</h2>
+        <div class="cv-entry">
+            <div class="cv-place">Barnard College, Columbia University — New York, NY</div>
+            <div class="cv-detail">BA in Computer Science, minors in Statistics and Political Science · Expected May 2027 · GPA: 3.7</div>
+        </div>
+        <div class="cv-entry">
+            <div class="cv-place">University of Illinois, Urbana-Champaign — Urbana, IL</div>
+            <div class="cv-detail">Political Science and Statistics · Aug 2023 – May 2024 · GPA: 3.9</div>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Honors &amp; Grants</h2>
+        <div class="cv-entry"><div class="cv-detail">Andrew W. Mellon Foundation Enhancing the Sciences Fund at Barnard College (2026)</div></div>
+        <div class="cv-entry"><div class="cv-detail">CyberNYC Research Experiences for Undergraduates Funding (2026)</div></div>
+        <div class="cv-entry"><div class="cv-detail">Dean's List, Barnard College (2026)</div></div>
+        <div class="cv-entry"><div class="cv-detail">Dean's List, University of Illinois, Urbana-Champaign (2024)</div></div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Technical Skills</h2>
+        <div class="skill-tags">
+            <span class="skill-tag">R</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">JavaScript</span>
+            <span class="skill-tag">C</span>
+        </div>
+    </div>
+
+    <div class="cv-section">
+        <h2>Languages</h2>
+        <div class="cv-entry"><div class="cv-detail">English (fluent) · Chinese-Mandarin (native) · Cantonese (native)</div></div>
+    </div>
+
+    <p style="font-size:13.5px; color:var(--text-secondary); margin-top:16px;">
+        For full details including research experience descriptions, see the <a href="assets/pdf/Alyssa_Gao_CV.pdf" target="_blank">PDF version</a>.
+    </p>
+</div>
+
+<!-- ==================== CONTACT ==================== -->
+<div class="tab-content" id="contact">
+
+    <h2>Get in Touch</h2>
+    <p>The best way to reach me is by email. I'm happy to chat about research, PhD programs, or anything else.</p>
+
+    <div style="margin: 24px 0;">
+        <div class="contact-row"><span class="contact-label">Email</span> <a href="mailto:ag5039@barnard.edu">ag5039@barnard.edu</a></div>
+        <div class="contact-row"><span class="contact-label">GitHub</span> <a href="https://github.com/alyssarrko" target="_blank">github.com/alyssarrko</a></div>
+        <div class="contact-row"><span class="contact-label">LinkedIn</span> <a href="https://www.linkedin.com/in/alyssa-ko-gr030731/" target="_blank">linkedin.com/in/alyssa-ko-gr030731</a></div>
+    </div>
+
+    <hr>
+
+    <p style="color: var(--text-secondary); font-style: italic;">
+        I'm currently applying to PhD programs for Fall 2027. If you're a researcher working on privacy,
+        HCI, consent, or AI governance — I'd especially love to hear from you.
+    </p>
+</div>
+
+<!-- ==================== PERSONAL ==================== -->
+<div class="tab-content" id="personal">
+
+    <p>When I'm not thinking about privacy and consent, you can usually find me doing one of these things.</p>
+
+    <h2>Film Photography</h2>
+    <p>
+        I've been shooting film for a while and have developed prints at several darkrooms. I love the slowness
+        of it — the intentionality that comes with a limited number of exposures. Travel photography is a favorite;
+        there's something special about capturing a place on film.
+    </p>
+
+    <h2>Cooking</h2>
+    <p>I enjoy cooking and experimenting in the kitchen — it's a creative outlet that doubles as a survival skill.</p>
+    <img src="assets/img/cooking.jpg" alt="Cooking" class="personal-photo" onclick="openLightbox(this.src)">
+
+    <h2>Other Interests</h2>
+    <p>
+        I watch a lot of football, have strong opinions about film and music, and think a lot about how we
+        navigate social and political life online.
+    </p>
+</div>
+
+</main>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img" src="" alt="Enlarged view">
+</div>
+
+<script>
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tabs a').forEach(el => el.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    history.replaceState(null, '', `#${tabId}`);
+}
+
+function openLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// Handle direct links (e.g. #research)
+window.addEventListener('load', () => {
+    const hash = window.location.hash.slice(1);
+    if (hash && document.getElementById(hash)) switchTab(hash);
+});
+</script>
+
+</body>
+</html>
