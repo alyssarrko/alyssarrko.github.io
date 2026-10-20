@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "cheatsheet-generator": {
+      "source": "Evan715823/cheatsheet-generator-skill",
+      "sourceType": "github",
+      "skillPath": "skills/cheatsheet-generator/SKILL.md",
+      "computedHash": "0ee1fde4545333ebf2567a3ebb1180a33ca264b76cf6b5837e35cbc5ddbb9382"
+    }
+  }
+}
