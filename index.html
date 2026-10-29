@@ -275,14 +275,14 @@
 
         .pub .pub-title { font-style: italic; }
 
-        /* --- PERSONAL --- */
-        .personal-photo {
+        /* --- Fun-Stuff --- */
+        .fun-stuff-photo {
             max-width: 360px;
             border-radius: 8px;
             margin: 16px 0;
         }
 
-        @media (max-width: 600px) { .personal-photo { max-width: 100%; } }
+        @media (max-width: 600px) { .fun-stuff-photo { max-width: 100%; } }
 
         /* --- CV --- */
         .cv-download {
@@ -375,7 +375,7 @@
             <li><a onclick="switchTab('research')" data-tab="research">Research</a></li>
             <li><a onclick="switchTab('cv')" data-tab="cv">CV</a></li>
             <li><a onclick="switchTab('contact')" data-tab="contact">Contact</a></li>
-            <li><a onclick="switchTab('personal')" data-tab="personal">Personal</a></li>
+            <li><a onclick="switchTab('fun-stuff')" data-tab="fun-stuff">fun-stuff</a></li>
         </ul>
     </div>
 </nav>
@@ -443,7 +443,7 @@
 
     <hr>
 
-    <h2>Current Projects</h2>
+    <h2>Work in Progress</h2>
 
     <div class="project">
         <h3>What To Do When Your Phone Gets Stolen</h3>
@@ -455,7 +455,7 @@
         <p>
             Co-leading a research team evaluating the quality, coverage, and actionability of online advice
             available to phone theft victims. We designed a search protocol emulating how a victim would seek
-            help — authoring 90 queries and controlling for time, location, and personalization — then applied
+            help — authoring 90 queries and controlling for time, location, and fun-stuffization — then applied
             reflexive thematic analysis to build a source × code matrix exposing systematic coverage gaps.
         </p>
         <p>
@@ -467,15 +467,31 @@
         <img src="phone_theft_poster.jpg" alt="Phone theft research poster" class="poster-img" onclick="openLightbox(this.src)">
         <div class="img-caption">Presenting at Barnard College Summer Research Institute, 2026</div>
     </div>
-
+    
     <div class="project">
-        <h3>Senior Thesis — Consent Reflection Tools</h3>
-        <p class="meta">Barnard College · 2026–2027</p>
+        <h3>Barnard Computer Science Senior Thesis — Remembering Misinformation</h3>
+        <p class="meta">Researcher · Aug 2026 - Present · CHI '28(?)<br>
+        Advisor: <a href="https://ahmerarif.com/">Prof. Ahmer Arif</a> </p>
         <p>
-            Building a probe that lets users reflect on their own consent decisions in digital environments,
-            using AI-agent and collective design methods. This work explores whether structured reflection
-            can change how people think about the privacy trade-offs they make every day.
+            We are investigating how student protesters process the negative memories that misinformation leaves behind.
+            I'm currently co-designing a probe-making memory toolkit where participants create artifacts about 
+            their experiences, followed by semi-structured interviews about what the making process surfaced.
+            Recently I piloted some materials that could be used for toolkit choices on myself and it was such a great
+            experience!
         </p>
+        <p>
+            We're now finalizing research method while working on IRB application, recruitment will start in the 
+            beginning of Spring 2027 semester.
+        </p>
+        <p>Some work on memory and probe-making in HCI that inspires this project:</p>
+            <ul class="reading-list">
+            <li>Tsai, Orth &amp; van den Hoven. 
+                <a href="https://doi.org/10.1145/3064663.3064791">"Designing Memory Probes to Inform Dialogue."</a> DIS 2017.</li>
+            <li>Sas, Whittaker &amp; Zimmerman. 
+                <a href="https://doi.org/10.1145/2926714">"Design for Rituals of Letting Go."</a> TOCHI 2016.</li>
+            <li>Ankenbauer &amp; Brewer. 
+                <a href="https://doi.org/10.1145/3701211">"Time's Sublimest Target: Practices of Forgetting in HCI and CSCW."</a> PACM HCI 2025.</li>
+        </ul>
     </div>
 
     <hr>
@@ -592,35 +608,40 @@
     </p>
 </div>
 
-<!-- ==================== PERSONAL ==================== -->
-<div class="tab-content" id="personal">
+<!-- ==================== FUN STUFF ==================== -->
+<div class="tab-content" id="fun-stuff">
 
-    <p>When I'm not thinking about privacy and consent, you can usually find me doing one of these things.</p>
-
-    <h2>Film Photography</h2>
     <p>
-        I've been shooting film for a while and have developed prints at several darkrooms, I love the slowness
-        and unique texture of it. Travel photography is my favorite.
+        📮 I enjoy exchanging postcards with strangers on 
+        <a href="https://www.postcrossing.com/">Postcrossing</a>.
     </p>
 
-    <h2>Postcrossing</h2>
     <p>
-        I like collecting beautiful stamps and writing postcards to friends and strangers!
-    </p>
-    
-    <h2>Cooking</h2>
-    <p> 
-        I enjoy cooking and experimenting in the kitchen. When my mind is filled with untangled thoughts, I always 
-        find it helpful to use my own hands building something. 
+        🍣 I love sashimi! My favorite chirashi places in NYC are Sushi Yasaka, Hiroshisa, and Sushi Sho.
     </p>
 
-    <h2>Other Interests</h2>
     <p>
-        I LOVE collecting crazy cookie consent banner design. If you've seen any designs that make you confused/annoyed,
-        please share it with me!
+        🎬 I've watched over 500 films and my top 4 on 
+        <a href="https://letterboxd.com/">Letterboxd</a> are: 
+        <em>Happyend</em> (2024), <em>Crouching Tiger, Hidden Dragon</em> (2000), 
+        <em>Decision to Leave</em> (2022), and <em>Possession</em> (1981).
     </p>
+
+    <p>
+        📷 I shoot film and love developing prints in the darkroom. Love the slowness and texture of it.
+    </p>
+
+    <p>
+        🍳 I enjoy cooking and experimenting in the kitchen. When my mind is filled with untangled thoughts, 
+        I always find it helpful to use my own hands building something.
+    </p>
+
+    <p>
+        🍪 I LOVE collecting crazy cookie consent banner designs. If you've seen any that make you 
+        confused or annoyed, please share them with me!
+    </p>
+
 </div>
-
 </main>
 
 <!-- Lightbox -->
