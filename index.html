@@ -246,23 +246,36 @@
             margin-bottom: 8px;
         }
 
-        .poster-img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin: 16px 0;
+        /* floating project image */
+        .project-img {
+            float: right;
+            width: 200px;
+            margin: 0 0 1em 1.5em;
             cursor: pointer;
+        }
+
+        .project-img img {
+            width: 100%;
+            border-radius: 8px;
             transition: transform 0.2s;
         }
 
-        .poster-img:hover { transform: scale(1.01); }
+        .project-img img:hover { transform: scale(1.01); }
 
-        .img-caption {
+        .project-img figcaption {
             font-size: 13px;
             color: var(--text-secondary);
             text-align: center;
-            margin-top: -8px;
-            margin-bottom: 16px;
+            margin-top: 4px;
             font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .project-img {
+                float: none;
+                width: 100%;
+                margin: 16px 0;
+            }
         }
 
         /* --- PUBLICATIONS --- */
@@ -275,7 +288,7 @@
 
         .pub .pub-title { font-style: italic; }
 
-        /* --- Fun-Stuff --- */
+        /* --- Fun Stuff --- */
         .fun-stuff-photo {
             max-width: 360px;
             border-radius: 8px;
@@ -375,7 +388,7 @@
             <li><a onclick="switchTab('research')" data-tab="research">Research</a></li>
             <li><a onclick="switchTab('cv')" data-tab="cv">CV</a></li>
             <li><a onclick="switchTab('contact')" data-tab="contact">Contact</a></li>
-            <li><a onclick="switchTab('fun-stuff')" data-tab="fun-stuff">fun-stuff</a></li>
+            <li><a onclick="switchTab('fun-stuff')" data-tab="fun-stuff">Fun Stuff</a></li>
         </ul>
     </div>
 </nav>
@@ -452,20 +465,24 @@
         Advisors: <a href="https://www.lucysimko.com/">Prof. Lucy Simko</a>,
         <a href="https://www.yaseminacar.de/">Prof. Yasemin Acar</a> (Paderborn University)</p>
 
-        <p>
-            Co-leading a research team evaluating the quality, coverage, and actionability of online advice
-            available to phone theft victims. We designed a search protocol emulating how a victim would seek
-            help — authoring 90 queries and controlling for time, location, and fun-stuffization — then applied
-            reflexive thematic analysis to build a source × code matrix exposing systematic coverage gaps.
-        </p>
-        <p>
-            Key findings: advice protects the device but not the person; emotional support is nearly absent
-            from official sources; and no single source is comprehensive. Supported by the Andrew W. Mellon
-            Foundation and CyberNYC REU funding.
-        </p>
+        <figure class="project-img" onclick="openLightbox('phone_theft_poster.jpg')">
+        <img src="phone_theft_poster.jpg" alt="Phone theft research poster">
+        <figcaption>Presenting at Barnard College Summer Research Institute, 2026</figcaption>
+    </figure>
 
-        <img src="phone_theft_poster.jpg" alt="Phone theft research poster" class="poster-img" onclick="openLightbox(this.src)">
-        <div class="img-caption">Presenting at Barnard College Summer Research Institute, 2026</div>
+        <p>
+            Co-leading a systematic evaluation of online advice available to phone theft victims. We constructed a dataset
+            of roughly 300 sources by authoring 90 search queries and controlling for time, location, and personalization, 
+            then applied reflexive thematic analysis and built heatmaps in R to visualize what topics were and were not covered.
+        </p>
+        <p>
+            Key findings: the advice ecosystem is structurally misaligned with victims’ actual needs. 
+            Results disproportionately tell people what they should have done before the theft happened.
+            Emotional support is nearly absent from official sources. 
+        </p>
+        <p>
+            Sponsored by the Andrew W. Mellon Foundation and CyberNYC REU funding.
+        </p>
     </div>
     
     <div class="project">
@@ -483,15 +500,15 @@
             We're now finalizing research method while working on IRB application, recruitment will start in the 
             beginning of Spring 2027 semester.
         </p>
-        <p>Some work on memory and probe-making in HCI that inspires this project:</p>
-            <ul class="reading-list">
-            <li>Tsai, Orth &amp; van den Hoven. 
-                <a href="https://doi.org/10.1145/3064663.3064791">"Designing Memory Probes to Inform Dialogue."</a> DIS 2017.</li>
-            <li>Sas, Whittaker &amp; Zimmerman. 
-                <a href="https://doi.org/10.1145/2926714">"Design for Rituals of Letting Go."</a> TOCHI 2016.</li>
-            <li>Ankenbauer &amp; Brewer. 
-                <a href="https://doi.org/10.1145/3701211">"Time's Sublimest Target: Practices of Forgetting in HCI and CSCW."</a> PACM HCI 2025.</li>
-        </ul>
+            <p>Some work on memory and probe-making in HCI that inspires this project:</p>
+                <ul class="reading-list">
+                <li>Tsai, Orth &amp; van den Hoven. 
+                    <a href="https://doi.org/10.1145/3064663.3064791">"Designing Memory Probes to Inform Dialogue."</a> DIS 2017.</li>
+                <li>Sas, Whittaker &amp; Zimmerman. 
+                    <a href="https://doi.org/10.1145/2926714">"Design for Rituals of Letting Go."</a> TOCHI 2016.</li>
+                <li>Ankenbauer &amp; Brewer. 
+                    <a href="https://doi.org/10.1145/3701211">"Time's Sublimest Target: Practices of Forgetting in HCI and CSCW."</a> PACM HCI 2025.</li>
+            </ul>
     </div>
 
     <hr>
